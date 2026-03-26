@@ -7,7 +7,7 @@ from typing import Any, Dict
 from google import genai
 from google.genai import types
  
-DEFAULT_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash-lite")
+DEFAULT_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
  
  
 def call_llm_structured(
@@ -34,6 +34,8 @@ def call_llm_structured(
     )
  
     raw_text = (response.text or "").strip()
+    print("GEMINI RAW RESPONSE:", raw_text)
+ 
     if not raw_text:
         raise RuntimeError("Gemini returned an empty response")
  
